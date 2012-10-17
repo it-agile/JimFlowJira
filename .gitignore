@@ -1,0 +1,8 @@
+*.swp
+bin
+build
+.settings
+.project
+.classpath
+amps-standalone/
+target/

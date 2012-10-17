@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.itagile</groupId>
+	<artifactId>jimflowjira</artifactId>
+	<packaging>atlassian-plugin</packaging>
+	<version>1.0.0</version>
+
+	<name>JimFlow Custom Field Plugin</name>
+	<description>This plugin generates a JimFlow-Url</description>
+
+	<url>http://www.jimflow.jimdo.com</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.atlassian.jira</groupId>
+			<artifactId>atlassian-jira</artifactId>
+			<version>${jira.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.atlassian.maven.plugins</groupId>
+				<artifactId>maven-jira-plugin</artifactId>
+				<version>3.10.4</version>
+				<extensions>true</extensions>
+				<configuration>
+					<productVersion>${jira.version}</productVersion>
+					<productDataVersion>${jira.data.version}</productDataVersion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<properties>
+		<jira.version>5.0</jira.version>
+		<amps.version>3.10.4</amps.version>
+	</properties>
+
+</project>

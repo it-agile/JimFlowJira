@@ -1,0 +1,5 @@
+#if ($v)
+  $textutils.linkURL($!v.toString())
+#else ($value)
+  $textutils.linkURL($!value.toString())
+#end
