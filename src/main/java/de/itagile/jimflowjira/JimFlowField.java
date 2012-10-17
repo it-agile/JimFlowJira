@@ -1,6 +1,7 @@
 package de.itagile.jimflowjira;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import com.atlassian.jira.issue.fields.layout.field.FieldLayoutItem;
 public class JimFlowField extends
 		com.atlassian.jira.issue.customfields.impl.URLCFType {
 	private static final String DEFAULT_URI = "http://jimflow.jimdo.com/";
+	private final DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
 
 	public JimFlowField(CustomFieldValuePersister customFieldValuePersister,
 			GenericConfigManager genericConfigManager) {
@@ -37,7 +39,7 @@ public class JimFlowField extends
 			String summary = issue.getSummary();
 			String reporterName = issue.getReporter().getName();
 			Timestamp created = issue.getCreated();
-			String createdString = new SimpleDateFormat("dd.MM.yyyy").format(created);
+			String createdString = formatDate(created);
 			String type = issue.getIssueTypeObject().getName();
 			link = link.replaceFirst("\\$id", String.valueOf(id))
 					.replaceFirst("\\$title", summary)
@@ -54,5 +56,9 @@ public class JimFlowField extends
 			params.put("v", params.get("value"));
 		}
 		return params;
+	}
+
+	public String formatDate(Timestamp created) {
+		return formatter.format(created);
 	}
 }
