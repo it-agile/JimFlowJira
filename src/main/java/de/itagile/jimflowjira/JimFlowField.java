@@ -53,7 +53,7 @@ public class JimFlowField extends
 			}
 			params.put("v", link);
 		} catch (Exception e) {
-			params.put("v", params.get("value"));
+			params.put("v", "");
 		}
 		return params;
 	}
